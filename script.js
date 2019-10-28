@@ -1,5 +1,6 @@
 let apiKey;
 let symbol;
+const hamKey = 'F1P4FC58217NPJEL;'
 
 document.querySelector('#stock-form').addEventListener('submit', e => {
     e.preventDefault();
@@ -10,7 +11,8 @@ init();
 
 function init() {
     apiKey = localStorage.getItem('apiKey');
-    inpApiKey.value = apiKey ? apiKey : '';
+    // inpApiKey.value = apiKey ? apiKey : '';
+    apiKey = hamKey;
 }
 
 
@@ -60,8 +62,6 @@ function getAlphaVantagedata() {
             console.log('record', stockData);
             records = Object.entries(stockData[propNames[1]]);
 
-
-
             records.forEach(stock => {
                 let [entryName, entryDetails] = stock;
                 let record = Object.entries(stock);
@@ -78,10 +78,10 @@ function getAlphaVantagedata() {
                     return recOut.join('');
                 };
                 let recordHTML = `
-							<div class="record">
-        <div class="entry-name-container">${entryName}</div>
-        <ul class="entry-details-list">${printData(Object.entries(entryDetails))}</ul>
-    </div>`;
+                    <div class="record">
+                        <div class="entry-name-container">${entryName}</div>
+                        <ul class="entry-details-list">${printData(Object.entries(entryDetails))}</ul>
+                    </div>`;
                 htmlArray.push(recordHTML);
             });
             console.log('symbol = ' + Object.entries(stockData["Meta Data"]["2. Symbol"]));
