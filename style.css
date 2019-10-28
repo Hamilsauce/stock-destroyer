@@ -148,11 +148,13 @@ p {
 	color: rgb(20, 59, 71);
 	transition: 500ms padding ease, 3000ms border ease;
 }
-	.entry-details-list>li>p{
-			font-weight: bold;
-			margin-top: 0px;
-			margin-bottom: 5px;
-	}
+
+.entry-details-list>li>p {
+	font-weight: bold;
+	margin-top: 0px;
+	margin-bottom: 5px;
+}
+
 @media screen and (max-width: 600px) {
 	#content-container {
 		width: auto;
@@ -161,6 +163,7 @@ p {
 		padding: 3px;
 
 	}
+
 	#headers {
 		font-size: 1.1em;
 	}

@@ -1,19 +1,20 @@
 let apiKey;
 let symbol;
+const hamKey = 'F1P4FC58217NPJEL;'
 
 document.querySelector('#stock-form').addEventListener('submit', e => {
     e.preventDefault();
     getAlphaVantagedata()
 });
+
 //run  init function defined immediately below upon loading
 init();
 
 function init() {
     apiKey = localStorage.getItem('apiKey');
-    inpApiKey.value = apiKey ? apiKey : '';
+    // inpApiKey.value = apiKey ? apiKey : '';
+    apiKey = hamKey;
 }
-
-
 
 /*
  Part 1: get data from storage, user; validate data and construct query string/url for http request
@@ -46,7 +47,6 @@ function getAlphaVantagedata() {
             '&apikey=' + apiKey;
     }
 
-
     request({
         url: url
     })
@@ -57,16 +57,13 @@ function getAlphaVantagedata() {
             let dataMessage = document.querySelector('#data-display-message');
             let propNames = Object.keys(stockData);
 
-            console.log('record', stockData);
             records = Object.entries(stockData[propNames[1]]);
-
-
 
             records.forEach(stock => {
                 let [entryName, entryDetails] = stock;
                 let record = Object.entries(stock);
-                console.log('test', 'stock = ' + stock, 'entryName = ' + entryName, 'details = ' +
-                    entryDetails);
+                // console.log('test', 'stock = ' + stock, 'entryName = ' + entryName, 'details = ' +
+                //     entryDetails);
 
                 let printData = rec => {
                     let recOut = [];
@@ -78,13 +75,13 @@ function getAlphaVantagedata() {
                     return recOut.join('');
                 };
                 let recordHTML = `
-							<div class="record">
-        <div class="entry-name-container">${entryName}</div>
-        <ul class="entry-details-list">${printData(Object.entries(entryDetails))}</ul>
-    </div>`;
+                    <div class="record">
+                        <div class="entry-name-container">${entryName}</div>
+                        <ul class="entry-details-list">${printData(Object.entries(entryDetails))}</ul>
+                    </div>`;
                 htmlArray.push(recordHTML);
             });
-            console.log('symbol = ' + Object.entries(stockData["Meta Data"]["2. Symbol"]));
+            // console.log('symbol = ' + Object.entries(stockData["Meta Data"]["2. Symbol"]));
             dataMessage.innerHTML = `Currently viewing results for ${symbol}.`;
             dataDisplay.innerHTML = htmlArray.join('');
         })
@@ -92,7 +89,7 @@ function getAlphaVantagedata() {
         .catch(error => {
             console.log(error);
         });
-    console.log('end', records);
+    // console.log('end', records);
 }
 
 
@@ -116,22 +113,7 @@ let request = obj => {
         };
         xhr.onerror = () => reject(xhr.statusText);
         xhr.send(obj.body);
-
-
     });
-}
-
-function callback(xhr) {
-    const curlyBracket = '{';
-    const response = xhr.target.response;
-    divContents.innerText = response;
-
-    if (response.slice(0, 1) !== curlyBracket) {
-        return;
-    } // not a json file
-
-    const json = JSON.parse(response);
-    console.log('json', json);
 }
 
 function setInterval() {
