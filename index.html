@@ -25,7 +25,8 @@
 		<form id="stock-form">
 			<label id="inpApiKey-label">API key <input id=inpApiKey class="text-input" onchange=storeApiKey();
 					value='F1P4FC58217NPJEL'></label>
-			<p id="symbol-input"><label>Symbol <input id=inpSymbol class="text-input" placeholder='Enter stock symbol'></label></p>
+			<p id="symbol-input"><label>Symbol <input id=inpSymbol class="text-input"
+						placeholder='Enter stock symbol'></label></p>
 			<p>
 				<label for="selFunction">Function</label>
 				<select id=selFunction class="select-control" onchange=setInterval();>
@@ -71,72 +72,11 @@
 
 		<div id="data-container">
 			<div id="data-display-message">
-				Data will appear here after you push the button. This may take a number of seconds. Open the
-				developer console to see more details.
+				View stock histories here after a request is submitted
 			</div>
 
 			<div id="divContents">
-				<div class="record">
-					<div class="entry-name-container">2019-10-25 16:00:00</div>
-					<ul class="entry-details-list">
-						<li>1. open: 5.4300</li>
-						<li>2. high: 5.4400</li>
-						<li>3. low: 5.4200</li>
-						<li>4. close: 5.4200</li>
-						<li>5. volume: 23912</li>
-					</ul>
-				</div>
-				<div class="record">
-					<div class="entry-name-container">2019-10-25 15:59:00</div>
-					<ul class="entry-details-list">
-						<li>1. open: 5.4300</li>
-						<li>2. high: 5.4300</li>
-						<li>3. low: 5.4200</li>
-						<li>4. close: 5.4300</li>
-						<li>5. volume: 1233</li>
-					</ul>
-				</div>
-				<div class="record">
-					<div class="entry-name-container">2019-10-25 15:58:00</div>
-					<ul class="entry-details-list">
-						<li>1. open: 5.4202</li>
-						<li>2. high: 5.4353</li>
-						<li>3. low: 5.4053</li>
-						<li>4. close: 5.4302</li>
-						<li>5. volume: 11230</li>
-					</ul>
-				</div>
-				<div class="record">
-					<div class="entry-name-container">2019-10-25 15:57:00</div>
-					<ul class="entry-details-list">
-						<li>1. open: 5.4202</li>
-						<li>2. high: 5.4352</li>
-						<li>3. low: 5.4152</li>
-						<li>4. close: 5.4165</li>
-						<li>5. volume: 8772</li>
-					</ul>
-				</div>
-				<div class="record">
-					<div class="entry-name-container">2019-10-25 15:56:00</div>
-					<ul class="entry-details-list">
-						<li>1. open: 5.4302</li>
-						<li>2. high: 5.4352</li>
-						<li>3. low: 5.4252</li>
-						<li>4. close: 5.4302</li>
-						<li>5. volume: 2067</li>
-					</ul>
-				</div>
 
-				<div class="record">
-					<div class="entry-name-container">2019-10-25 14:11:00</div>
-					<ul class="entry-details-list">
-						<li>1. open: 5.3900</li>
-						<li>2. high: 5.3900</li>
-						<li>3. low: 5.3900</li>
-						<li>4. close: 5.3900</li>
-						<li>5. volume: 100</li>
-					</ul>
-				</div>
 			</div>
 		</div>
 	</div>
