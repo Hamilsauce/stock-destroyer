@@ -71,7 +71,7 @@ function getAlphaVantagedata() {
                 let printData = rec => {
                     let recOut = [];
                     rec.forEach(recProp => {
-                        let line = `<li>${recProp[0].slice(3)}: ${recProp[1]}</li>`;
+                        let line = `<li style="text-align: center;"><p>${recProp[0].slice(3)}:</p> ${recProp[1]}</li>`;
                         recOut.push(line);
                     });
 
