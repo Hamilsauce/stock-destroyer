@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="date" content="2018-01-14">
+	<title>Stock Destroyer</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+	<header id="nav-bar">
+		<div id="headers">
+			<h2>The Stock Destroyer</h2>
+			<!-- <h4>Api key: F1P4FC58217NPJEL</h4> -->
+		</div>
+		<div id="nav-bar-strip"></div>
+
+	</header>
+	<div id="content-container">
+		<form id="stock-form">
+			<label>API key <input id=inpApiKey class="text-input" onchange=storeApiKey();
+					value='F1P4FC58217NPJEL'></label>
+			<p><label>Symbol <input id=inpSymbol class="text-input" placeholder='Enter stock symbol'></label></p>
+			<p>
+				<label for="selFunction">Function</label>
+				<select id=selFunction class="select-control" onchange=setInterval();>
+					<option>TIME_SERIES_INTRADAY</option>
+					<option>TIME_SERIES_DAILY</option>
+					<option>TIME_SERIES_DAILY_ADJUSTED</option>
+					<option>TIME_SERIES_WEEKLY</option>
+					<option>TIME_SERIES_WEEKLY_ADJUSTED</option>
+					<option>TIME_SERIES_MONTHLY</option>
+					<option>TIME_SERIES_MONTHLY_ADJUSTED</option>
+					<option>BATCH_STOCK_QUOTES</option>
+				</select>
+
+				<span id=spnInterval>
+					<label for="selInterval">Interval</label>
+					<select id=selInterval class="select-control" name="selInterval">
+						<option>1min</option>
+						<option>5min</option>
+						<option>15min</option>
+						<option>30min</option>
+						<option>60min</option>
+					</select>
+				</span>
+			</p>
+			<p>
+				<label for="selSize">Output size</label>
+				<select id=selSize class="select-control">
+					<option>compact</option>
+					<option>full</option>
+				</select>
+
+				<label for="selType">Data type</label>
+				<select id=selType class="select-control">
+					<option>json</option>
+					<option>csv</option>
+				</select>
+			</p>
+			<div class="form-button-container">
+				<input type="submit" class="form-button id=" submit-button" value="Get Data" />
+				<button class="form-button" onclick=saveDataToFile();>Save to File</button>
+			</div class="form-button-container">
+		</form>
+
+		<div id="data-container">
+			<div id="data-display-message">
+				Data will appear here after you push the button. This may take a number of seconds. Open the
+				developer console to see more details.
+			</div>
+
+			<div id="divContents">
+				<div class="record">
+					<div class="entry-name-container">2019-10-25 16:00:00</div>
+					<ul class="entry-details-list">
+						<li>1. open: 5.4300</li>
+						<li>2. high: 5.4400</li>
+						<li>3. low: 5.4200</li>
+						<li>4. close: 5.4200</li>
+						<li>5. volume: 23912</li>
+					</ul>
+				</div>
+				<div class="record">
+					<div class="entry-name-container">2019-10-25 15:59:00</div>
+					<ul class="entry-details-list">
+						<li>1. open: 5.4300</li>
+						<li>2. high: 5.4300</li>
+						<li>3. low: 5.4200</li>
+						<li>4. close: 5.4300</li>
+						<li>5. volume: 1233</li>
+					</ul>
+				</div>
+				<div class="record">
+					<div class="entry-name-container">2019-10-25 15:58:00</div>
+					<ul class="entry-details-list">
+						<li>1. open: 5.4202</li>
+						<li>2. high: 5.4353</li>
+						<li>3. low: 5.4053</li>
+						<li>4. close: 5.4302</li>
+						<li>5. volume: 11230</li>
+					</ul>
+				</div>
+				<div class="record">
+					<div class="entry-name-container">2019-10-25 15:57:00</div>
+					<ul class="entry-details-list">
+						<li>1. open: 5.4202</li>
+						<li>2. high: 5.4352</li>
+						<li>3. low: 5.4152</li>
+						<li>4. close: 5.4165</li>
+						<li>5. volume: 8772</li>
+					</ul>
+				</div>
+				<div class="record">
+					<div class="entry-name-container">2019-10-25 15:56:00</div>
+					<ul class="entry-details-list">
+						<li>1. open: 5.4302</li>
+						<li>2. high: 5.4352</li>
+						<li>3. low: 5.4252</li>
+						<li>4. close: 5.4302</li>
+						<li>5. volume: 2067</li>
+					</ul>
+				</div>
+
+				<div class="record">
+					<div class="entry-name-container">2019-10-25 14:11:00</div>
+					<ul class="entry-details-list">
+						<li>1. open: 5.3900</li>
+						<li>2. high: 5.3900</li>
+						<li>3. low: 5.3900</li>
+						<li>4. close: 5.3900</li>
+						<li>5. volume: 100</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="script.js"></script>
+
+</body>
+
+</html>
