@@ -3,8 +3,14 @@ let symbol;
 const hamKey = 'F1P4FC58217NPJEL;'
 
 document.querySelector('#stock-form').addEventListener('submit', e => {
+    let dataMessage = document.querySelector('#data-display-message');
+    let dataDisplay = document.querySelector('#divContents');
+
     e.preventDefault();
-    getAlphaVantagedata()
+    getAlphaVantagedata();
+    dataDisplay.innerHTML = '';
+    dataMessage.innerHTML = 'Waiting for data...'
+
 });
 
 //run  init function defined immediately below upon loading
@@ -22,7 +28,7 @@ Part 2: Make the call
 Part 3: make someting useful out of returned data, display it on screen
 */
 function getAlphaVantagedata() {
-    const func = selFunction.value;
+    const func = setFunc();
     const size = selSize.value;
     const type = selType.value;
     const interval = selInterval.value;
@@ -38,24 +44,21 @@ function getAlphaVantagedata() {
         url =
             'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=MSFT&interval=1min&apikey=demo';
     } else {
-        url = 'https://www.alphavantage.co/query?function=' + func +
-            // '&symbol=INSG' +
-            '&symbol=' + symbol +
-            '&interval=' + interval +
-            '&outputsize=' + size +
-            '&datatype=' + type +
-            '&apikey=' + apiKey;
+
+        url = `https://www.alphavantage.co/query?function=${func}&symbol=${symbol}&interval=${interval}&outputs=${size}&datatyp=${type}&apikey=${apiKey}`;
+        console.log('url: ' + url);
+
     }
 
-    request({
-        url: url
-    })
+    request({ url: url })
         .then(data => {
             let stockData = JSON.parse(data);
             let html = "";
             let dataDisplay = document.querySelector('#divContents');
             let dataMessage = document.querySelector('#data-display-message');
             let propNames = Object.keys(stockData);
+
+
 
             records = Object.entries(stockData[propNames[1]]);
 
@@ -68,13 +71,13 @@ function getAlphaVantagedata() {
                 let printData = rec => {
                     let recOut = [];
                     rec.forEach(recProp => {
-                        let line = `<li style="text-align: center;"><p>${recProp[0].slice(3)}:</p> ${recProp[1]}</li>`;
+                        let line = /*html*/`<li style="text-align: center;"><p>${recProp[0].slice(3)}:</p> ${recProp[1]}</li>`;
                         recOut.push(line);
                     });
 
                     return recOut.join('');
                 };
-                let recordHTML = `
+                let recordHTML = /*html*/`
                     <div class="record">
                         <div class="entry-name-container">${entryName}</div>
                         <ul class="entry-details-list">${printData(Object.entries(entryDetails))}</ul>
@@ -85,13 +88,13 @@ function getAlphaVantagedata() {
             dataMessage.innerHTML = `Currently viewing results for ${symbol}.`;
             dataDisplay.innerHTML = htmlArray.join('');
         })
-
         .catch(error => {
+            let dataMessage = document.querySelector('#data-display-message');
+            dataMessage.innerHTML = 'Something went wrong! Try again n00b'
+
             console.log(error);
         });
-    // console.log('end', records);
 }
-
 
 let request = obj => {
     return new Promise((resolve, reject) => {
@@ -116,8 +119,22 @@ let request = obj => {
     });
 }
 
+const setFunc = () => {
+    const funcInput = document.querySelector('#selFunction').value;
+    let functionOut = '';
+
+    if (funcInput == 'Daily') {
+        functionOut = 'TIME_SERIES_DAILY';
+    } else if (funcInput == 'Today') {
+        functionOut = 'TIME_SERIES_INTRADAY';
+    } else {
+        console.log('Problem in function setFunc');
+    }
+    return functionOut;
+}
+
 function setInterval() {
-    spnInterval.style.display = selFunction.value !== 'TIME_SERIES_INTRADAY' ? 'none' : '';
+    spnInterval.style.display = selFunction.value !== 'Today' ? 'none' : 'block';
 }
 
 function saveDataToFile() {
@@ -132,13 +149,11 @@ function saveDataToFile() {
     a = null;
 }
 
-
 function storeApiKey() {
     apiKey = inpApiKey.value;
     localStorage.setItem('apiKey', apiKey);
 }
 
 function getStorage() {
-
     apiKey = localStorage.getItem('apiKey');
 }

@@ -7,13 +7,19 @@ body {
 	background: rgb(224, 227, 228);
 	border: 2px solid rgb(61, 149, 175);
 	border-top: 0px solid rgb(83, 169, 196);
-	border-bottom: 0px solid rgb(83, 169, 196);
+	/* border-bottom: 0px solid rgb(83, 169, 196); */
 }
 
 label {
 
 	padding: 2px;
 }
+ #inpApiKey {
+	 display: none;
+ }
+ #inpApiKey-label {
+	 display: none;
+ }
 
 #nav-bar {
 	box-sizing: border-box;
@@ -63,6 +69,7 @@ label {
 
 
 p {
+	margin: 10px 5px;
 	color: rgb(72, 144, 167);
 	text-decoration: none;
 }
@@ -74,19 +81,33 @@ p {
 	border: 1px solid rgb(211, 211, 211);
 	border-radius: 3px;
 }
+.period-container {
+	display: flex;
+	justify-content: space-between;
+	width: 285px;
+}
 
+.options-container {
+		display: flex;
+		justify-content: space-between;
+		width: 330px;
+}
 .select-control {
 	padding: 3px;
 	margin: 3px 10px 3px 5px;
 
-	color: rgb(117, 117, 117);
+	color: rgb(80, 80, 80);
 	border: 1px solid rgb(211, 211, 211);
 	border-radius: 3px;
 }
+	#spnInterval {
+		display: none;
+		/* margin-bottom: 8px; */
+	}
 
 .form-button {
 	padding: 4px;
-	margin: 5px 10px 20px 5px;
+	margin: 0px 10px 15px 5px;
 
 	font-weight: 500;
 	background: rgb(83, 169, 196);
@@ -115,7 +136,7 @@ p {
 #data-container {
 	/* margin: 10px; */
 	padding: 10px;
-	border: 2px solid rgb(179, 179, 179);
+	border: 2px solid rgb(57, 159, 190);
 	border-radius: 5px;
 	transition: 500ms padding ease, 3000ms border ease;
 	background: rgba(255, 255, 255, 0.774);
@@ -160,22 +181,25 @@ p {
 		width: auto;
 		margin: auto;
 		font-size: 0.9em;
-		padding: 3px;
+		padding: 10px;
 
 	}
 
 	#headers {
 		font-size: 1.1em;
 	}
+	.welcome-message {
+		margin-top: 15px;
+		margin-bottom: 15px;
+		font-size: 1.1em;
+	}
+
 
 	#inpApiKey-label,
 	#inpApiKey {
 		display: none;
 	}
 
-	#symbol-input {
-		margin-top: 10px;
-	}
 
 	.form-button {
 		margin-top: 15px;
@@ -183,13 +207,9 @@ p {
 
 
 	p {
-		margin-bottom: 6px;
-		margin-top: 6px;
+		/* margin-bottom: 6px;
+		margin-top: 6px; */
 	}
 
-	#spnInterval {
-		display: block;
-		margin-top: 6px;
-		margin-bottom: 8px;
-	}
+
 }

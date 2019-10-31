@@ -22,23 +22,27 @@
 
 	</header>
 	<div id="content-container">
+		<p class="welcome-message">Enter a stock symbol below and set the options as desired.</p>
 		<form id="stock-form">
-			<label style="display:none;" id="inpApiKey-label">API key <input style="display:none;" id=inpApiKey class="text-input" value="F1P4FC58217NPJEL"
-					onchange=storeApiKey(); value='F1P4FC58217NPJEL'></label>
+			<!-- <label id="inpApiKey-label">API key <input id=inpApiKey class="text-input" value="F1P4FC58217NPJEL"
+					onchange=storeApiKey(); value='F1P4FC58217NPJEL'></label> -->
 			<p id="symbol-input"><label>Symbol <input id=inpSymbol class="text-input"
 						placeholder='Enter stock symbol'></label></p>
-			<p>
-				<label for="selFunction">Function</label>
-				<select id=selFunction class="select-control" onchange=setInterval();>
-					<option>TIME_SERIES_INTRADAY</option>
-					<option>TIME_SERIES_DAILY</option>
+
+			<p class="period-container">
+				<span><label for="selFunction">Period</label>
+					<select id="selFunction" class="select-control" onchange="setInterval()">
+						<option>Daily</option>
+						<option>Today</option>
+						<!--Commented out extra functions
 					<option>TIME_SERIES_DAILY_ADJUSTED</option>
 					<option>TIME_SERIES_WEEKLY</option>
 					<option>TIME_SERIES_WEEKLY_ADJUSTED</option>
 					<option>TIME_SERIES_MONTHLY</option>
 					<option>TIME_SERIES_MONTHLY_ADJUSTED</option>
-					<option>BATCH_STOCK_QUOTES</option>
-				</select>
+					<option>BATCH_STOCK_QUOTES</option> -->
+					</select> </span>
+
 
 				<span id=spnInterval>
 					<label for="selInterval">Interval</label>
@@ -51,18 +55,19 @@
 					</select>
 				</span>
 			</p>
-			<p>
-				<label for="selSize">Output size</label>
-				<select id=selSize class="select-control">
-					<option>compact</option>
-					<option>full</option>
-				</select>
 
-				<label for="selType">Data type</label>
-				<select id=selType class="select-control">
-					<option>json</option>
-					<option>csv</option>
-				</select>
+			<p class="options-container">
+				<span><label for="selSize">Output size</label>
+					<select id=selSize class="select-control">
+						<option>compact</option>
+						<option>full</option>
+					</select></span>
+
+				<span><label for="selType">Data type</label>
+					<select id=selType class="select-control">
+						<option>json</option>
+						<option>csv</option>
+					</select></span>
 			</p>
 			<div class="form-button-container">
 				<input type="submit" class="form-button id=" submit-button" value="Get Data" />
