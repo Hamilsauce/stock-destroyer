@@ -24,8 +24,8 @@
 	<div id="content-container">
 		<p class="welcome-message">Enter a stock symbol below and set the options as desired.</p>
 		<form id="stock-form">
-			<label id="inpApiKey-label">API key <input id=inpApiKey class="text-input" value="F1P4FC58217NPJEL"
-					onchange=storeApiKey(); value='F1P4FC58217NPJEL'></label>
+			<!-- <label id="inpApiKey-label">API key <input id=inpApiKey class="text-input" value="F1P4FC58217NPJEL"
+					onchange=storeApiKey(); value='F1P4FC58217NPJEL'></label> -->
 			<p id="symbol-input"><label>Symbol <input id=inpSymbol class="text-input"
 						placeholder='Enter stock symbol'></label></p>
 
@@ -58,16 +58,16 @@
 
 			<p class="options-container">
 				<span><label for="selSize">Output size</label>
-				<select id=selSize class="select-control">
-					<option>compact</option>
-					<option>full</option>
-				</select></span>
+					<select id=selSize class="select-control">
+						<option>compact</option>
+						<option>full</option>
+					</select></span>
 
 				<span><label for="selType">Data type</label>
-				<select id=selType class="select-control">
-					<option>json</option>
-					<option>csv</option>
-				</select></span>
+					<select id=selType class="select-control">
+						<option>json</option>
+						<option>csv</option>
+					</select></span>
 			</p>
 			<div class="form-button-container">
 				<input type="submit" class="form-button id=" submit-button" value="Get Data" />
