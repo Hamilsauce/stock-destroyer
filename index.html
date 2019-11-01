@@ -1,4 +1,7 @@
-<!doctype html><html lang="en"><head>
+<!doctype html>
+<html lang="en">
+ <head> 
+<title>Stock Destroyer</title>
   <style>
   body {
     font-family: 'Roboto', sans-serif;
@@ -227,15 +230,7 @@ margin-top: 6px; */
   <meta name="date" content="2018-01-14"> 
   <title>Stock Destroyer</title> 
   <link rel="stylesheet" href="style.css"> 
- <style type="text/css" id="dcoder_stylesheet">body{
-    background-color: #e2e2e2;
-    }
-    h1{
-    color: #555555;
-    }
-    .dcoder{
-      color: #777777;
-    }</style></head> 
+ </head> 
  <body> 
   <header id="nav-bar"> 
    <div id="headers"> 
@@ -258,7 +253,7 @@ margin-top: 6px; */
           <option>TIME_SERIES_MONTHLY</option>
           <option>TIME_SERIES_MONTHLY_ADJUSTED</option>
           <option>BATCH_STOCK_QUOTES</option> --> </select> </span> <span id="spnInterval"> <label for="selInterval">Interval</label> <select id="selInterval" class="select-control" name="selInterval"> <option>1min</option> <option>5min</option> <option>15min</option> <option>30min</option> <option>60min</option> </select> </span> </p> 
-    <p class="options-container"> <span><label for="selSize">Output size</label> <select id="selSize" class="select-control"> <option>compact</option> <option>full</option> </select></span> <span><label for="selType">Data type</label> <select id="selType" class="select-control"> <option>json</option> <option>csv</option> </select></span> </p> 
+    <p><label for="selSize">Output size</label> <select id="selSize" class="select-control"> <option>compact</option> <option>full</option> </select></span> </p><p><label for="selType">Data type</label> <select id="selType" class="select-control"> <option>json</option> <option>csv</option> </select> </p> 
     <div class="form-button-container"> 
      <input type="submit" class="form-button id=" submit-button" value="Get Data"> 
      <button class="form-button" onclick="saveDataToFile();">Save to File</button> 
@@ -436,5 +431,5 @@ margin-top: 6px; */
       apiKey = localStorage.getItem('apiKey');
     }
   </script> 
- 
-</body></html>
+ </body>
+</html>
