@@ -1,92 +1,440 @@
-<!doctype html>
-<html lang="en">
+<!doctype html><html lang="en"><head>
+  <style>
+  body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    margin: 0 auto;
+    max-width: 700px;
+    height: 100%;
+    background: rgb(224, 227, 228);
+    border: 2px solid rgb(61, 149, 175);
+    border-top: 0px solid rgb(83, 169, 196);
+    /* border-bottom: 0px solid rgb(83, 169, 196); */
+  }
 
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="">
-	<meta name="keywords" content="">
-	<meta name="date" content="2018-01-14">
-	<title>Stock Destroyer</title>
-	<link rel="stylesheet" href="style.css">
-</head>
+  label {
 
-<body>
+    padding: 2px;
+  }
 
-	<header id="nav-bar">
-		<div id="headers">
-			<h2>The Stock Destroyer</h2>
-			<!-- <h4>Api key: F1P4FC58217NPJEL</h4> -->
-		</div>
-		<div id="nav-bar-strip"></div>
+  #inpApiKey {
+    display: none;
+  }
 
-	</header>
-	<div id="content-container">
-		<p class="welcome-message">Enter a stock symbol below and set the options as desired.</p>
-		<form id="stock-form">
-			<!-- <label id="inpApiKey-label">API key <input id=inpApiKey class="text-input" value="F1P4FC58217NPJEL"
-					onchange=storeApiKey(); value='F1P4FC58217NPJEL'></label> -->
-			<p id="symbol-input"><label>Symbol <input id=inpSymbol class="text-input"
-						placeholder='Enter stock symbol'></label></p>
+  #inpApiKey-label {
+    display: none;
+  }
 
-			<p class="period-container">
-				<span><label for="selFunction">Period</label>
-					<select id="selFunction" class="select-control" onchange="setInterval()">
-						<option>Daily</option>
-						<option>Today</option>
-						<!--Commented out extra functions
-					<option>TIME_SERIES_DAILY_ADJUSTED</option>
-					<option>TIME_SERIES_WEEKLY</option>
-					<option>TIME_SERIES_WEEKLY_ADJUSTED</option>
-					<option>TIME_SERIES_MONTHLY</option>
-					<option>TIME_SERIES_MONTHLY_ADJUSTED</option>
-					<option>BATCH_STOCK_QUOTES</option> -->
-					</select> </span>
+  #nav-bar {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: auto;
+    height: auto;
+  }
+
+  #headers {
+    box-sizing: border-box;
+    margin: 0;
+    margin-bottom: 0px;
+    padding: 10px 10px 10px 15px;
+    font-size: 19px;
+    color: rgb(255, 255, 255);
+    background: rgb(83, 169, 196);
+    border-bottom: 2px solid rgb(135, 194, 212);
+  }
+
+  #headers>h2 {
+    margin-top: 15px;
+    margin-bottom: 5px;
+  }
 
 
-				<span id=spnInterval>
-					<label for="selInterval">Interval</label>
-					<select id=selInterval class="select-control" name="selInterval">
-						<option>1min</option>
-						<option>5min</option>
-						<option>15min</option>
-						<option>30min</option>
-						<option>60min</option>
-					</select>
-				</span>
-			</p>
+  #nav-bar-strip {
+    /* box-sizing: border-box; */
+    display: block;
+    padding: 5px;
+    margin: 0;
+    height: 10px;
+    width: auto;
+    background: rgb(65, 160, 189);
+    border-bottom: 2px solid rgb(65, 146, 170)
+  }
 
-			<p class="options-container">
-				<span><label for="selSize">Output size</label>
-					<select id=selSize class="select-control">
-						<option>compact</option>
-						<option>full</option>
-					</select></span>
 
-				<span><label for="selType">Data type</label>
-					<select id=selType class="select-control">
-						<option>json</option>
-						<option>csv</option>
-					</select></span>
-			</p>
-			<div class="form-button-container">
-				<input type="submit" class="form-button id=" submit-button" value="Get Data" />
-				<button class="form-button" onclick=saveDataToFile();>Save to File</button>
-			</div class="form-button-container">
-		</form>
+  #content-container {
+    padding: 20px;
+    background: rgb(250, 250, 247);
+    height: 100%;
+    font-size: 1rem;
 
-		<div id="data-container">
-			<div id="data-display-message">
-				View stock histories here after a request is submitted
-			</div>
+  }
 
-			<div id="divContents">
 
-			</div>
-		</div>
-	</div>
-	<script src="script.js"></script>
+  p {
+    margin: 10px 5px;
+    color: rgb(72, 144, 167);
+    text-decoration: none;
+  }
 
-</body>
+  .text-input {
+    padding: 3px;
+    margin: 3px 5px;
 
-</html>
+    border: 1px solid rgb(211, 211, 211);
+    border-radius: 3px;
+  }
+
+  .period-container {
+    display: flex;
+    justify-content: space-between;
+    width: 285px;
+  }
+
+  .options-container {
+ 
+  }
+
+  .select-control {
+    padding: 3px;
+    margin: 3px 10px 3px 5px;
+
+    color: rgb(80, 80, 80);
+    border: 1px solid rgb(211, 211, 211);
+    border-radius: 3px;
+  }
+
+  #spnInterval {
+    display: none;
+    /* margin-bottom: 8px; */
+  }
+
+  .form-button {
+    padding: 4px;
+    margin: 0px 10px 15px 5px;
+
+    font-weight: 500;
+    background: rgb(83, 169, 196);
+
+    color: rgb(253, 253, 253);
+    border: 1px solid rgb(170, 170, 170);
+    border-radius: 3px;
+    transition: 300ms background ease;
+  }
+
+  .form-button:hover {
+    background: rgb(57, 159, 190);
+  }
+
+  .form-button:active {
+    background: rgb(68, 99, 109);
+  }
+
+  #data-display-message {
+    padding: 5px;
+    margin-bottom: 15px;
+    margin-top: 10px;
+    transition: 500ms padding ease, 3000ms border ease;
+  }
+
+  #data-container {
+    /* margin: 10px; */
+    padding: 10px;
+    border: 2px solid rgb(57, 159, 190);
+    border-radius: 5px;
+    transition: 500ms padding ease, 3000ms border ease;
+    background: rgba(255, 255, 255, 0.774);
+    transition: 500ms color ease;
+  }
+
+  .record {
+    padding: 5px;
+    /* color: rgb(57, 159, 190); */
+    background: rgba(255, 255, 255, 0.774);
+    transition: 500ms padding ease;
+  }
+
+  .entry-name-container {
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    background: rgba(57, 159, 190, 0.842);
+    padding: 3px;
+    padding-left: 6px;
+    border-radius: 2px;
+    transition: 500ms background ease;
+  }
+
+  .entry-details-list {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+    padding-left: 0px;
+    list-style: none;
+    color: rgb(20, 59, 71);
+    transition: 500ms padding ease, 3000ms border ease;
+  }
+
+  .entry-details-list>li>p {
+    font-weight: bold;
+    margin-top: 0px;
+    margin-bottom: 5px;
+  }
+
+  @media screen and (max-width: 600px) {
+    #content-container {
+      width: auto;
+      margin: auto;
+      font-size: 0.9em;
+      padding: 10px;
+
+    }
+
+    #headers {
+      font-size: 1.1em;
+    }
+
+    .welcome-message {
+      margin-top: 15px;
+      margin-bottom: 15px;
+      font-size: 1.1em;
+    }
+
+
+    #inpApiKey-label,
+    #inpApiKey {
+      display: none;
+    }
+
+
+    .form-button {
+      margin-top: 15px;
+    }
+
+
+    p {
+      /* margin-bottom: 6px;
+margin-top: 6px; */
+    }
+
+
+  }
+</style> 
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <meta name="description" content=""> 
+  <meta name="keywords" content=""> 
+  <meta name="date" content="2018-01-14"> 
+  <title>Stock Destroyer</title> 
+  <link rel="stylesheet" href="style.css"> 
+ <style type="text/css" id="dcoder_stylesheet">body{
+    background-color: #e2e2e2;
+    }
+    h1{
+    color: #555555;
+    }
+    .dcoder{
+      color: #777777;
+    }</style></head> 
+ <body> 
+  <header id="nav-bar"> 
+   <div id="headers"> 
+    <h2>The Stock Destroyer</h2> 
+    <!-- <h4>Api key: F1P4FC58217NPJEL</h4> --> 
+   </div> 
+   <div id="nav-bar-strip"></div> 
+  </header> 
+  <div id="content-container"> 
+   <p class="welcome-message">Enter a stock symbol below and set the options as desired.</p> 
+   <form id="stock-form"> 
+    <!-- <label id="inpApiKey-label">API key <input id=inpApiKey class="text-input" value="F1P4FC58217NPJEL"
+          onchange=storeApiKey(); value='F1P4FC58217NPJEL'></label> --> 
+    <p id="symbol-input"><label>Symbol <input id="inpSymbol" class="text-input" placeholder="Enter stock symbol"></label></p> 
+    <p class="period-container"> <span><label for="selFunction">Period</label> <select id="selFunction" class="select-control" onchange="setInterval()"> <option>Daily</option> <option>Today</option> 
+       <!--Commented out extra functions
+          <option>TIME_SERIES_DAILY_ADJUSTED</option>
+          <option>TIME_SERIES_WEEKLY</option>
+          <option>TIME_SERIES_WEEKLY_ADJUSTED</option>
+          <option>TIME_SERIES_MONTHLY</option>
+          <option>TIME_SERIES_MONTHLY_ADJUSTED</option>
+          <option>BATCH_STOCK_QUOTES</option> --> </select> </span> <span id="spnInterval"> <label for="selInterval">Interval</label> <select id="selInterval" class="select-control" name="selInterval"> <option>1min</option> <option>5min</option> <option>15min</option> <option>30min</option> <option>60min</option> </select> </span> </p> 
+    <p class="options-container"> <span><label for="selSize">Output size</label> <select id="selSize" class="select-control"> <option>compact</option> <option>full</option> </select></span> <span><label for="selType">Data type</label> <select id="selType" class="select-control"> <option>json</option> <option>csv</option> </select></span> </p> 
+    <div class="form-button-container"> 
+     <input type="submit" class="form-button id=" submit-button" value="Get Data"> 
+     <button class="form-button" onclick="saveDataToFile();">Save to File</button> 
+    </div> 
+   </form> 
+   <div id="data-container"> 
+    <div id="data-display-message">
+      View stock histories here after a request is submitted 
+    </div> 
+    <div id="divContents"> 
+    </div> 
+   </div> 
+  </div> 
+  <!-- <script src="script.js"></script> --> 
+  <script>
+    let apiKey;
+    let symbol;
+    const hamKey = 'F1P4FC58217NPJEL;'
+
+    document.querySelector('#stock-form').addEventListener('submit', e => {
+      let dataMessage = document.querySelector('#data-display-message');
+      let dataDisplay = document.querySelector('#divContents');
+
+      e.preventDefault();
+      getAlphaVantagedata();
+      dataDisplay.innerHTML = '';
+      dataMessage.innerHTML = 'Waiting for data...'
+
+    });
+
+    //run init function defined immediately below upon loading
+    init();
+
+    function init() {
+      apiKey = localStorage.getItem('apiKey');
+      // inpApiKey.value = apiKey ? apiKey : '';
+      apiKey = hamKey;
+    }
+
+    /*
+    Part 1: get data from storage, user; validate data and construct query string/url for http request
+    Part 2: Make the call
+    Part 3: make someting useful out of returned data, display it on screen
+    */
+    function getAlphaVantagedata() {
+      const func = setFunc();
+      const size = selSize.value;
+      const type = selType.value;
+      const interval = selInterval.value;
+      let returnSymbol = '';
+      let records = [];
+      let record = '';
+      let htmlArray = [];
+      symbol = inpSymbol.value;
+
+      const demo = symbol === 'MSFT' && apiKey === 'demo' ? true : false;
+
+      if (demo === true) {
+        url =
+          'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=MSFT&interval=1min&apikey=demo';
+      } else {
+
+        url =
+          `https://www.alphavantage.co/query?function=${func}&symbol=${symbol}&interval=${interval}&outputs=${size}&datatyp=${type}&apikey=${apiKey}`;
+        console.log('url: ' + url);
+
+      }
+
+      request({ url: url  })
+        .then(data => {
+          let stockData = JSON.parse(data);
+          let html = "";
+          let dataDisplay = document.querySelector('#divContents');
+          let dataMessage = document.querySelector('#data-display-message');
+          let propNames = Object.keys(stockData);
+
+
+
+          records = Object.entries(stockData[propNames[1]]);
+
+          records.forEach(stock => {
+            let [entryName, entryDetails] = stock;
+            let record = Object.entries(stock);
+            let entryDate = new Date(entryName).toDateString();
+
+            let printData = rec => {
+              let recOut = [];
+              rec.forEach(recProp => {
+                let line = /*html*/ `<li style="text-align: center;">
+  <p>${recProp[0].slice(3)}:</p> ${recProp[1]}
+</li>`;
+                recOut.push(line);
+              });
+
+              return recOut.join('');
+            };
+            let recordHTML = /*html*/ `
+<div class="record">
+  <div class="entry-name-container">${entryDate}</div>
+  <ul class="entry-details-list">${printData(Object.entries(entryDetails))}</ul>
+</div>`;
+            htmlArray.push(recordHTML);
+          });
+          // console.log('symbol = ' + Object.entries(stockData["Meta Data"]["2. Symbol"]));
+          dataMessage.innerHTML = `Currently viewing results for ${symbol}.`;
+          dataDisplay.innerHTML = htmlArray.join('');
+        })
+        .catch(error => {
+          let dataMessage = document.querySelector('#data-display-message');
+          dataMessage.innerHTML = 'Something went wrong! Try again n00b'
+
+          console.log(error);
+        });
+    }
+
+    let request = obj => {
+      return new Promise((resolve, reject) => {
+
+        let xhr = new XMLHttpRequest();
+        xhr.open(obj.mthod || 'GET', obj.url, true);
+
+        if (obj.headers) {
+          Object.keys(obj.headers).forEach(key => {
+            xhr.setRequestHeader(key, obj.headers[key]);
+          });
+        }
+        xhr.onload = () => {
+          if (xhr.status >= 200 && xhr.status < 300) {
+            resolve(xhr.response);
+          } else {
+            reject(xhr.statusText);
+          }
+        };
+        xhr.onerror = () => reject(xhr.statusText);
+        xhr.send(obj.body);
+      });
+    }
+
+    const setFunc = () => {
+      const funcInput = document.querySelector('#selFunction').value;
+      let functionOut = '';
+
+      if (funcInput == 'Daily') {
+        functionOut = 'TIME_SERIES_DAILY';
+      } else if (funcInput == 'Today') {
+        functionOut = 'TIME_SERIES_INTRADAY';
+      } else {
+        console.log('Problem in function setFunc');
+      }
+      return functionOut;
+    }
+
+    function setInterval() {
+      spnInterval.style.display = selFunction.value !== 'Today' ? 'none' : 'block';
+    }
+
+    function saveDataToFile() {
+      const data = document.querySelector('#divContents');
+      const blob = new Blob([data.innerHTML]);
+
+      let a = document.body.appendChild(document.createElement('a'));
+
+      a.href = window.url.createObjecturl(blob);
+      a.download = symbol + '.txt';
+      a.click();
+      a = null;
+    }
+
+    function storeApiKey() {
+      apiKey = inpApiKey.value;
+      localStorage.setItem('apiKey', apiKey);
+    }
+
+    function getStorage() {
+      apiKey = localStorage.getItem('apiKey');
+    }
+  </script> 
+ 
+</body></html>
