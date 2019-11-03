@@ -309,6 +309,9 @@ border-bottom:2px solid var(--main-blue1);
         margin-top: 15px;
     }
 
-
+.date-result-list {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 2;
+}
 
 }
