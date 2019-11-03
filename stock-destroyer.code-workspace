@@ -4,5 +4,36 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"workbench.colorCustomizations": {
+			"activityBar.background": "#802B6D",
+			"activityBar.foreground": "#B4BCC4",
+			"activityBar.inactiveForeground": "#9C548C",
+			"activityBarBadge.background": "#506E8C",
+			"activityBarBadge.foreground": "#e7e7e7",
+			"titleBar.activeBackground": "#96A93A",
+			"titleBar.inactiveBackground": "#718415",
+			"titleBar.activeForeground": "#fff",
+			"titleBar.inactiveForeground": "#D1BFCD",
+			"statusBar.background": "#96A93A",
+			"statusBarItem.hoverBackground": "#297d94",
+			"statusBar.foreground": "#fff"
+		},
+	}
 }
+/* color Backup
+"workbench.colorCustomizations": {
+	"activityBar.background": "#802B6D",
+	"activityBar.foreground": "#B4BCC4",
+	"activityBar.inactiveForeground": "#9C548C",
+	"activityBarBadge.background": "#506E8C",
+	"activityBarBadge.foreground": "#e7e7e7",
+	"titleBar.activeBackground": "#96A93A",
+	"titleBar.inactiveBackground": "#718415",
+	"titleBar.activeForeground": "#fff",
+	"titleBar.inactiveForeground": "#D1BFCD",
+	"statusBar.background": "#96A93A",
+	"statusBarItem.hoverBackground": "#297d94",
+	"statusBar.foreground": "#fff"
+},
+*/
