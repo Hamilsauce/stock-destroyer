@@ -1,0 +1,686 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="date" content="2019-10-31">
+  <title>Stock Destroyer</title>
+<style>
+.main-blue {color: rgb(56, 97, 130)}
+.main-blue1 {color: rgba(180, 188, 196, 1)}
+.main-blue2 {color: rgba(80, 110, 140, 1)}
+.main-blue3 {color: rgba(20, 55, 88, 1)}
+.main-blue4 {color: rgba(7, 40, 72, 1)}
+.main-purp {color: rgba(128, 43, 109, 1)}
+
+.main-purp1 {color: rgba(209, 191, 205, 1)}
+.main-purp2 {color: rgba(156, 84, 140, 1)}
+.main-purp3 {color: rgba(99, 16, 81, 1)}
+.main-purp4 {color: rgb(82, 65, 78)}
+.main-green {color: rgba(150, 169, 58, 1)}
+
+.main-green1 {color: rgba(245, 249, 228, 1)}
+.main-green2 {color: rgba(191, 208, 111, 1)}
+.main-green3 {color: rgba(113, 132, 21, 1)}
+.main-green4 {color: rgba(89, 107, 3, 1)}
+
+
+:root {
+
+--main-blue: rgb(65, 97, 130);
+--main-blue1: rgba(80, 110, 140, 1);
+--main-blue2:rgba(180, 188, 196, 1);
+--main-purp2:rgb(151, 49, 129);
+--main-purp1:rgba(99, 16, 81, 1);
+--main-purp:rgb(82, 65, 78);
+--main-blue3:rgba(209, 191, 205, 1);
+--main-green:rgb(168, 197, 79);
+--main-green1: rgb(245, 249, 228);
+--main-green2: rgba(113, 132, 21, 1);
+}
+
+
+body {
+box-sizing: border-box;
+font-family: 'Roboto', sans-serif;
+font-size: 1rem;
+margin: 0 auto;
+max-width: 700px;
+height: 100%;
+background: rgb(223, 230, 226);
+
+/* border-bottom: 0px solid rgb(83, 169, 196); */
+}
+
+label {
+padding: 2px;
+}
+.app {
+box-sizing: border-box;
+color: var(--main-blue);
+background: rgba(248, 248, 248, 0.918);
+height: 100%;
+/* border: 2px solid var(--main-green); */
+margin: auto;
+}
+
+#nav-bar {
+box-sizing: border-box;
+display: flex;
+flex-direction: column;
+justify-content: center;
+width: auto;
+height: auto;
+}
+
+.headers {
+box-sizing: border-box;
+margin: 0;
+margin-bottom: 0px;
+padding: 5px 1px 10px 5px;
+font-size: 1.1em;
+color: rgb(255, 255, 255);
+background: var(--main-blue1);
+}
+
+
+
+#header-strip {
+box-sizing: border-box;
+display: block;
+padding: 20px 10px;
+margin: 0;
+margin-left: 15px;
+width: auto;
+background: var(--main-green);
+border-top: 2px solid var(--main-green1);
+border-left: 2px solid var(--main-green1);
+border-bottom: 2px solid var(--main-green1);
+}
+
+
+#content-container {
+box-sizing: border-box;
+padding: 10px 20px;
+background: rgba(248, 248, 248, 0.918);
+height: fit-content;
+font-size: 1rem;
+border-left: 2px solid var(--main-green);
+border-right: 2px solid var(--main-green);
+
+}
+
+.welcome-message {
+padding: 5px 10px;
+margin-top: 5px;
+margin-bottom: 0px;
+font-size: 1em;
+color: var(--main-blue1);
+
+}
+
+p {
+margin: 5px 5px;
+/* color: var(--main-blue); */
+text-decoration: none;
+}
+
+#stock-form {
+margin-bottom: 10px;
+padding: 5px;
+padding-bottom: 0px;
+}
+
+.text-input {
+padding: 3px;
+margin: 3px 5px;
+
+border: 1px solid var(--main-blue3);
+border-radius: 3px;
+}
+
+.period-container {
+display: flex;
+justify-content: space-between;
+width: 285px;
+}
+
+.select-control {
+padding: 3px;
+margin: 3px 10px 3px 5px;
+
+color: var(--main-blue1);
+
+border: 1px solid var(--main-blue3);
+border-radius: 3px;
+}
+
+#spnInterval {
+display: none;
+/* margin-bottom: 8px; */
+}
+
+.date-finder-container {
+box-sizing: border-box;
+display: none;
+justify-content: space-between;
+margin: 5px;
+margin-bottom: 0px;
+padding: 5px;
+padding-left: 15px;
+/* margin: 0px 0px;
+padding: 3px; */
+background: var(--main-green);
+border-radius: 3px;
+border: 1px solid var(--main-green2);
+border-bottom: 1px solid var(--main-green);
+}
+
+.date-finder-inputs {
+box-sizing: border-box;
+display: flex;
+justify-content: flex-end;
+}
+
+#date-input {
+border: 1px solid var(--main-blue);
+color: var(--main-blue1);
+height: 30px;
+margin: 0px;
+}
+.date-search-label {
+/* display: unset; */
+color: white;
+font-weight: bold;
+font-size: 1.1em;
+}
+.btn {
+padding: 4px 7px;
+margin: 1px 5px 1px 5px;
+
+font-weight: 500;
+background: var(--main-blue1);
+
+color: rgba(253, 253, 253, 0.945);
+border: 2px solid rgb(231, 231, 231);
+border-radius: 3px;
+transition: 200ms background ease, 500ms color ease;
+}
+
+.btn:hover {
+background: var(--main-blue);
+cursor: pointer;
+color: white;
+}
+
+.btn:active {
+background: rgb(24, 75, 92);
+}
+.options-container {
+display: flex;
+box-sizing: border-box;
+margin-top: 0px;
+padding: 0px;
+}
+
+.options-container>p {
+margin-top: 0px;
+}
+
+#find-button {
+box-sizing: border-box;
+margin:0px;
+height: 30px;
+}
+
+#data-display-message {
+padding: 5px;
+margin-bottom: 15px;
+margin-top: 10px;
+color: var(--main-blue1);
+transition: 500ms padding ease, 3000ms border ease;
+
+}
+
+#data-container {
+margin: 5px;
+margin-top: 0px;
+padding: 10px;
+border: 2px solid #4033585e;
+border-top: 2px solid #4033585e;
+border-radius: 3px;
+height: auto;
+background: rgba(255, 255, 255, 0.774);
+transition: 500ms color ease,500ms padding ease, 3000ms border ease;
+/* overflow: auto; */
+}
+
+.record {
+padding: 5px;
+/* color: rgb(57, 159, 190); */
+background: rgba(255, 255, 255, 0.774);
+transition: 500ms padding ease;
+}
+
+.entry-name-container {
+color: white;
+font-weight: bold;
+background:rgb(115, 142, 170);
+padding: 3px;
+padding-left: 6px;
+border-radius: 2px;
+transition: 500ms background ease;
+}
+
+.entry-details-list {
+box-sizing: border-box;
+display: flex;
+justify-content: space-evenly;
+margin: 0px auto;
+margin-left: 20px;
+margin-right: 5px;
+
+padding: 3px 5px 3px 0px;
+list-style: none;
+color: var(--main-blue1);
+background: var(--main-green1);
+transition: 500ms padding ease, 3000ms border ease;
+}
+.ResultItem {
+box-sizing: border-box;
+
+}
+.entry-details-list>li>p {
+font-weight: bold;
+margin-top: 0px;
+margin-bottom: 5px;
+}
+
+.date-result-list {
+/* display: flex; */
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+grid-template-rows: 1fr 1fr;
+
+gap: 10px;
+width: 90%;
+/* height: 60px; */
+margin: 5px auto 10px auto;
+border-top: 2px solid var(--main-blue1);
+border-bottom:2px solid var(--main-blue1);
+
+padding: 5px;
+list-style: none;
+color: white;
+}
+
+.data-point {
+box-sizing: border-box;
+display: flex;
+justify-content: space-evenly;
+flex-direction: column;
+padding: 5px 10px;
+margin: 0;
+font-size: 1.1em;
+color: white;
+
+background:rgb(151, 76, 135);
+transition: 300ms background ease-in-out,
+400ms padding ease-in-out;
+}
+.data-point:hover {
+box-sizing: border-box;
+background: var(--main-green);
+padding-left: 30px;
+
+/* border: 2px solid var(--main-blue1); */
+}
+.data-point>p {
+display: block;
+box-sizing: border-box;
+margin: 0;
+padding: 0px;
+
+
+}
+
+@media screen and (max-width: 600px) {
+#content-container {
+width: auto;
+margin: auto;
+font-size: 0.9em;
+padding: 10px;
+
+}
+
+#headers {
+font-size: 1.1em;
+}
+
+.btn {
+margin-top: 15px;
+}
+.date-finder-container {
+flex-direction: column;
+text-align: center;
+margin-bottom: 0px;
+}
+#date-input {
+height: 30px;
+margin: 0px;
+}
+
+.date-finder-inputs {
+justify-content: center;
+}
+
+}
+</style>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="app">
+    <header id="nav-bar">
+      <div class="headers main-color">
+
+        <h2 id="header-strip">The Stock Destroyer</h2>
+
+        <!-- <h4>Api key: F1P4FC58217NPJEL</h4> -->
+      </div>
+
+    </header>
+    <div id="content-container">
+      <p class="welcome-message">Enter a stock symbol below and set the options as desired.</p>
+      <form id="stock-form">
+        <p id="symbol-input"><label>Symbol<input id="inpSymbol" class="text-input"
+              placeholder="Enter stock symbol"></label>
+        </p>
+        <p class="period-container">
+          <span>
+            <label for="selFunction">Period</label>
+            <select id="selFunction" class="select-control" onchange="setInterval()">
+              <option>Daily</option>
+              <option>Today</option>
+              <!--Commented out extra functions
+          <option>TIME_SERIES_DAILY_ADJUSTED</option>
+          <option>TIME_SERIES_WEEKLY</option>
+          <option>TIME_SERIES_WEEKLY_ADJUSTED</option>
+          <option>TIME_SERIES_MONTHLY</option>
+          <option>TIME_SERIES_MONTHLY_ADJUSTED</option>
+          <option>BATCH_STOCK_QUOTES</option> -->
+            </select>
+          </span>
+          <span id="spnInterval">
+            <label for="selInterval">Interval</label>
+            <select id="selInterval" class="select-control" name="selInterval">
+              <option>1min</option>
+              <option>5min</option>
+              <option>15min</option>
+              <option>30min</option>
+              <option>60min</option>
+            </select>
+          </span>
+        </p>
+        <div class="options-container">
+        <p>
+          <label for="selSize">Output</label>
+          <select id="selSize" class="select-control">
+            <option>compact</option>
+            <option>full</option>
+          </select>
+        </p>
+        <p>
+          <label for="selType">Type</label>
+          <select id="selType" class="select-control">
+            <option>json</option>
+            <option>csv</option>
+          </select>
+        </p>
+        </div>
+        <div>
+          <input type="submit" class="btn main-green" id="submit-button" value="Get Data">
+          <button class="btn" onclick="saveDataToFile();">Save to File</button>
+        </div>
+      </form>
+      <div class="date-finder-container">
+        <label for="date-input" class="date-search-label">Search for specific date</label>
+        <div class="date-finder-inputs">
+        <input type="text" class="text-input" id="date-input" placeholder="Search date (mm/dd/yyyy)">
+        <button class="btn" id="find-button">Find</button>
+      </div>
+
+    </div>
+
+
+      <div id="data-container">
+        <div id="data-display-message">
+          View stock histories here after a request is submitted
+        </div>
+        <div id="search-results"></div>
+        <div id="divContents"></div>
+      </div>
+    </div>
+    <div style="display: none;">
+      <pre class="jsonStringer">
+        </pre>
+    </div>
+
+    <!-- <script src="script.js"></script> -->
+    <script>
+      let apiKey;
+      let symbol;
+      const hamKey = 'F1P4FC58217NPJEL;'
+      let records = [];
+      let stockData;
+
+      document.querySelector('#stock-form').addEventListener('submit', e => {
+        e.preventDefault();
+        let dataMessage = document.querySelector('#data-display-message');
+        let dataDisplay = document.querySelector('#divContents');
+
+        getAlphaVantagedata();
+        dataDisplay.innerHTML = '';
+        dataMessage.innerHTML = 'Waiting for data...'
+      });
+
+      document.querySelector('#find-button').addEventListener('click', e => {
+        const dateInput = document.querySelector('#date-input').value;
+        findDate(dateInput);
+      });
+
+      //run in it function defined immediately below upon loading
+      init();
+
+      function init() {
+        apiKey = localStorage.getItem('apiKey');
+        apiKey = hamKey;
+      }
+
+      /*
+      Part 1: get data from storage, user; validate data and construct query string/url for http request
+      Part 2: Make the call
+      Part 3: make someting useful out of returned data, display it on screen
+      */
+      function getAlphaVantagedata() {
+        const func = setFunc();
+        const size = selSize.value;
+        const type = selType.value;
+        const interval = selInterval.value;
+        let returnSymbol = '';
+        //  let records = [];
+        let record = '';
+        let htmlArray = [];
+        symbol = inpSymbol.value;
+        const url =
+          `https://www.alphavantage.co/query?function=${func}&symbol=${symbol}&interval=${interval}&outputs=${size}&datatyp=${type}&apikey=${apiKey}`;
+
+        request({
+            url: url
+          })
+          .then(data => {
+            stockData = JSON.parse(data);
+            let html = "";
+            let dataDisplay = document.querySelector('#divContents');
+            let dataMessage = document.querySelector('#data-display-message');
+            let propNames = Object.keys(stockData);
+
+            records = Object.entries(stockData[propNames[1]]);
+
+            records.forEach(stock => {
+              let [entryName, entryDetails] = stock;
+              let record = Object.entries(stock);
+              let entryDate = new Date(entryName).toDateString();
+
+              let printData = rec => {
+                let recOut = [];
+                rec.forEach(recProp => {
+                  let line = /*html*/ `<li style="text-align: center;">
+                            <p>${recProp[0].slice(3)}:</p> ${recProp[1]}
+                        </li>`;
+                  recOut.push(line);
+                });
+
+                return recOut.join('');
+              };
+              let recordHTML = /*html*/ `
+                        <div class="record">
+                            <div class="entry-name-container">${entryDate}</div>
+                            <ul class="entry-details-list">${printData(Object.entries(entryDetails))}</ul>
+                        </div>`;
+              htmlArray.push(recordHTML);
+            });
+            // console.log('symbol = ' + Object.entries(stockData["Meta Data"]["2. Symbol"]));
+            dataMessage.innerHTML = `Currently viewing results for ${symbol}.`;
+            dataDisplay.innerHTML = htmlArray.join('');
+            document.querySelector('.date-finder-container').style.display = "flex";
+            document.querySelector('#data-container').style.borderTop = "0px";
+          })
+          .catch(error => {
+            let dataMessage = document.querySelector('#data-display-message');
+            dataMessage.innerHTML = 'Something went wrong! Try again n00b';
+
+            console.log(error);
+          });
+      }
+
+      let request = obj => {
+        return new Promise((resolve, reject) => {
+
+          let xhr = new XMLHttpRequest();
+          xhr.open(obj.mthod || 'GET', obj.url, true);
+
+          if (obj.headers) {
+            Object.keys(obj.headers).forEach(key => {
+              xhr.setRequestHeader(key, obj.headers[key]);
+            });
+          }
+          xhr.onload = () => {
+            if (xhr.status >= 200 && xhr.status < 300) {
+              resolve(xhr.response);
+            } else {
+              reject(xhr.statusText);
+            }
+          };
+          xhr.onerror = () => reject(xhr.statusText);
+          xhr.send(obj.body);
+        });
+      }
+
+      const setFunc = () => {
+        const funcInput = document.querySelector('#selFunction').value;
+        let functionOut = '';
+
+        if (funcInput == 'Daily') {
+          functionOut = 'TIME_SERIES_DAILY';
+        } else if (funcInput == 'Today') {
+          functionOut = 'TIME_SERIES_INTRADAY';
+        } else {
+          console.log('Problem in function setFunc');
+        }
+        return functionOut;
+      }
+
+      function setInterval() {
+        spnInterval.style.display = selFunction.value !== 'Today' ? 'none' : 'block';
+      }
+
+      function saveDataToFile() {
+
+        const data = document.querySelector('.jsonStringer');
+        data.innerText = JSON.stringify(stockData);
+        const blob = new Blob([data.innerText]);
+        let a = document.body.appendChild(document.createElement('a'));
+
+        a.href = window.URL.createObjectURL(blob);
+        a.download = symbol + '.txt';
+        a.click();
+        a = null;
+      }
+
+      function storeApiKey() {
+        apiKey = inpApiKey.value;
+        localStorage.setItem('apiKey', apiKey);
+      }
+
+      function getStorage() {
+        apiKey = localStorage.getItem('apiKey');
+      }
+
+
+
+      const findDate = dateStr => {
+        let targetDate = new Date(dateStr).toDateString();
+        let currDate;
+        let dateResult = {};
+
+        let dateCompare = records.some(rec => {
+          currDate = new Date(rec[0]).toDateString();
+          if (targetDate == currDate) {
+            dateResult = rec[1];
+          }
+          return targetDate == currDate;
+        });
+        console.log(dateCompare);
+
+        writeFoundData(currDate, dateCompare, dateResult);
+
+
+
+      }
+      const writeFoundData = (date, dateFound, results) => {
+        const contentDisplay = document.querySelector('#search-results');
+        const dataMessage = document.querySelector('#data-display-message');
+        let message = '';
+        let dateArray = Object.entries(results);
+        let htmlOutput = [];
+
+
+        if (dateFound == false) {
+          message = `No results found for ${symbol} on ${date}. Fail!`;
+          dataMessage.innerHTML = message;
+          htmlOutput = 'Nope';
+          return;
+
+        } else {
+          message = `Showing results for ${symbol} on ${date}.`;
+          dateArray.forEach(el => {
+            let [dataKey, dataValue] = el;
+            let pairString = `<li class="data-point">
+                            <p style="font-weight: bold;">${dataKey.slice(3)}</p>
+                            <p>${dataValue}</p>
+                        </li>`;
+
+            htmlOutput.push(pairString);
+          });
+          dataMessage.innerHTML = message;
+          contentDisplay.innerHTML = `<ul class="date-result-list">${htmlOutput.join('')}</ul>`;
+        }
+      }
+    </script>
+
+</body>
+
+</html>

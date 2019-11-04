@@ -21,6 +21,7 @@
 
     --main-blue: rgb(65, 97, 130);
     --main-blue1: rgba(80, 110, 140, 1);
+    --main-blue2:rgba(180, 188, 196, 1);
     --main-purp2:rgb(151, 49, 129);
     --main-purp1:rgba(99, 16, 81, 1);
     --main-purp:rgb(82, 65, 78);
@@ -38,7 +39,7 @@ body {
     margin: 0 auto;
     max-width: 700px;
     height: 100%;
-    background: rgb(252, 252, 252);
+    background: rgb(223, 230, 226);
 
     /* border-bottom: 0px solid rgb(83, 169, 196); */
 }
@@ -51,7 +52,7 @@ label {
         color: var(--main-blue);
         background: rgba(248, 248, 248, 0.918);
         height: 100%;
-        border: 2px solid var(--main-green);
+        /* border: 2px solid var(--main-green); */
         margin: auto;
 }
 
@@ -91,10 +92,13 @@ label {
 
 
 #content-container {
+    box-sizing: border-box;
     padding: 10px 20px;
     background: rgba(248, 248, 248, 0.918);
-    height: 100%;
+    height: fit-content;
     font-size: 1rem;
+     border-left: 2px solid var(--main-green);
+     border-right: 2px solid var(--main-green);
 
 }
 
@@ -153,6 +157,7 @@ p {
     display: none;
     justify-content: space-between;
        margin: 5px;
+       margin-bottom: 0px;
        padding: 5px;
        padding-left: 15px;
     /* margin: 0px 0px;
@@ -234,7 +239,7 @@ p {
     margin-top: 0px;
     padding: 10px;
     border: 2px solid #4033585e;
-    border-top: 0px solid white;
+    border-top: 2px solid #4033585e;
     border-radius: 3px;
     height: auto;
     background: rgba(255, 255, 255, 0.774);
@@ -250,9 +255,9 @@ p {
 }
 
 .entry-name-container {
-    color: var(--main-blue);
+    color: white;
     font-weight: bold;
-    background: rgba(206, 209, 201, 0.63);
+    background:rgb(115, 142, 170);
     padding: 3px;
     padding-left: 6px;
     border-radius: 2px;
@@ -260,16 +265,23 @@ p {
 }
 
 .entry-details-list {
+    box-sizing: border-box;
     display: flex;
     justify-content: space-evenly;
-    margin-bottom: 20px;
-    padding-left: 0px;
+    margin: 0px auto;
+    margin-left: 20px;
+    margin-right: 5px;
+
+    padding: 3px 5px 3px 0px;
     list-style: none;
     color: var(--main-blue1);
-    ;
+    background: var(--main-green1);
     transition: 500ms padding ease, 3000ms border ease;
 }
+    .ResultItem {
+        box-sizing: border-box;
 
+    }
 .entry-details-list>li>p {
     font-weight: bold;
     margin-top: 0px;
@@ -304,13 +316,13 @@ border-bottom:2px solid var(--main-blue1);
     font-size: 1.1em;
     color: white;
 
-    background:var(--main-blue1);
+    background:rgb(151, 76, 135);
     transition: 300ms background ease-in-out,
     400ms padding ease-in-out;
 }
 .data-point:hover {
     box-sizing: border-box;
-    background: rgb(151, 76, 135);
+    background: var(--main-green);
     padding-left: 30px;
 
     /* border: 2px solid var(--main-blue1); */
@@ -343,6 +355,7 @@ border-bottom:2px solid var(--main-blue1);
 .date-finder-container {
     flex-direction: column;
     text-align: center;
+    margin-bottom: 0px;
 }
 #date-input {
     height: 30px;

@@ -2,6 +2,7 @@ let apiKey;
 let symbol;
 const hamKey = 'F1P4FC58217NPJEL;'
 let records = [];
+let stockData;
 
 document.querySelector('#stock-form').addEventListener('submit', e => {
     e.preventDefault();
@@ -48,7 +49,7 @@ function getAlphaVantagedata() {
         url: url
     })
         .then(data => {
-            let stockData = JSON.parse(data);
+            stockData = JSON.parse(data);
             let html = "";
             let dataDisplay = document.querySelector('#divContents');
             let dataMessage = document.querySelector('#data-display-message');
@@ -82,10 +83,12 @@ function getAlphaVantagedata() {
             // console.log('symbol = ' + Object.entries(stockData["Meta Data"]["2. Symbol"]));
             dataMessage.innerHTML = `Currently viewing results for ${symbol}.`;
             dataDisplay.innerHTML = htmlArray.join('');
+            document.querySelector('.date-finder-container').style.display = "flex";
+            document.querySelector('#data-container').style.borderTop = "0px";
         })
         .catch(error => {
             let dataMessage = document.querySelector('#data-display-message');
-            dataMessage.innerHTML = 'Something went wrong! Try again n00b'
+            dataMessage.innerHTML = 'Something went wrong! Try again n00b';
 
             console.log(error);
         });
@@ -133,8 +136,10 @@ function setInterval() {
 }
 
 function saveDataToFile() {
-    const data = document.querySelector('#divContents');
-    const blob = new Blob([stockData]);
+
+    const data = document.querySelector('.jsonStringer');
+    data.innerText = JSON.stringify(stockData);
+    const blob = new Blob([data.innerText]);
     let a = document.body.appendChild(document.createElement('a'));
 
     a.href = window.URL.createObjectURL(blob);
@@ -152,6 +157,8 @@ function getStorage() {
     apiKey = localStorage.getItem('apiKey');
 }
 
+
+
 const findDate = dateStr => {
     let targetDate = new Date(dateStr).toDateString();
     let currDate;
@@ -165,9 +172,12 @@ const findDate = dateStr => {
         return targetDate == currDate;
     });
     console.log(dateCompare);
-    writeFoundData(currDate, dateCompare, dateResult);
-}
 
+    writeFoundData(currDate, dateCompare, dateResult);
+
+
+
+}
 const writeFoundData = (date, dateFound, results) => {
     const contentDisplay = document.querySelector('#search-results');
     const dataMessage = document.querySelector('#data-display-message');
@@ -175,11 +185,13 @@ const writeFoundData = (date, dateFound, results) => {
     let dateArray = Object.entries(results);
     let htmlOutput = [];
 
+
     if (dateFound == false) {
         message = `No results found for ${symbol} on ${date}. Fail!`;
         dataMessage.innerHTML = message;
         htmlOutput = 'Nope';
         return;
+
     } else {
         message = `Showing results for ${symbol} on ${date}.`;
         dateArray.forEach(el => {
