@@ -48,14 +48,15 @@ label {
     padding: 2px;
 }
 .app {
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
         color: var(--main-blue);
         background: rgba(248, 248, 248, 0.918);
-        height: 100%;
+        min-height: 100%;
+        max-height: fit-content;
         /* border: 2px solid var(--main-green); */
         margin: auto;
-             border-left: 1px solid var(--main-green);
-             border-right: 1px solid var(--main-green)
+             border-left: 2px solid var(--main-green);
+             border-right: 2px solid var(--main-green)
 }
 
 #nav-bar {
@@ -71,10 +72,11 @@ label {
     box-sizing: border-box;
     margin: 0;
     margin-bottom: 0px;
-    padding: 5px 1px 10px 5px;
+    padding: 3px 1px 15px 0px;
     font-size: 1.1em;
     color: rgb(255, 255, 255);
     background: var(--main-blue1);
+      border-radius: 0px 0px 0px 60px;
 }
 
 
@@ -84,23 +86,22 @@ label {
     display: block;
     padding: 20px 10px;
     margin: 0;
-    margin-left: 15px;
+    margin-left: 3px;
     width: auto;
     background: var(--main-green);
     border-top: 2px solid  var(--main-green1);
     border-left: 2px solid  var(--main-green1);
     border-bottom: 2px  solid var(--main-green1);
+    border-radius: 20px 0px 15px 10px;
 }
 
 
 #content-container {
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     padding: 10px 20px;
     background: rgba(248, 248, 248, 0.918);
     height: fit-content;
     font-size: 1rem;
-     border-left: 2px solid var(--main-green);
-     border-right: 2px solid var(--main-green);
 
 }
 
@@ -121,14 +122,14 @@ p {
 
 #stock-form {
     margin-bottom: 10px;
-    padding: 5px;
+    padding: 5px
     padding-bottom: 0px;
 }
 
 .text-input {
     padding: 3px;
     margin: 3px 5px;
-
+    color:  var(--main-green2);
     border: 1px solid var(--main-blue3);
     border-radius: 3px;
 }
@@ -137,15 +138,16 @@ p {
     display: flex;
     justify-content: space-between;
     width: 285px;
+    margin: 10px 4px;
 }
 
 .select-control {
     padding: 3px;
     margin: 3px 10px 3px 5px;
 
-    color: var(--main-blue1);
+    color: var(--main-green2);
 
-    border: 1px solid var(--main-blue3);
+    border: 1px solid var(--main-blue2);
     border-radius: 3px;
 }
 
@@ -179,7 +181,7 @@ p {
  #date-input {
      border: 1px solid var(--main-blue);
      color: var(--main-blue1);
-     height: 30px;
+     height: 25px;
      margin: 0px;
  }
 .date-search-label {
@@ -212,19 +214,21 @@ p {
 }
 .options-container {
     display: flex;
+    justify-content: flex-start;
     box-sizing: border-box;
-    margin-top: 0px;
+    margin: 10px 0px;
     padding: 0px;
 }
 
 .options-container>p {
     margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 #find-button {
     box-sizing: border-box;
     margin:0px;
-    height: 30px;
+    height: 25px;
 }
 
 #data-display-message {
@@ -236,7 +240,19 @@ p {
 
 }
 
-#data-container {
+/* #data-container {
+    margin: 5px;
+    margin-top: 0px;
+    padding: 10px;
+    border: 2px solid #4033585e;
+    border-top: 2px solid #4033585e;
+    border-radius: 3px;
+    height: auto;
+    background: rgba(255, 255, 255, 0.774);
+    transition: 500ms color ease,500ms padding ease, 3000ms border ease;
+    overflow: auto;
+} */
+.result-section {
     margin: 5px;
     margin-top: 0px;
     padding: 10px;
@@ -271,13 +287,13 @@ p {
     display: flex;
     justify-content: space-evenly;
     margin: 0px auto;
-    margin-left: 20px;
+    margin-left: 15px;
     margin-right: 5px;
 
     padding: 3px 5px 3px 0px;
     list-style: none;
     color: var(--main-blue1);
-    background: var(--main-green1);
+    /* background: var(--main-green1); */
     transition: 500ms padding ease, 3000ms border ease;
 }
     .ResultItem {
@@ -293,10 +309,10 @@ p {
 .date-result-list {
     /* display: flex; */
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
 
-    gap: 10px;
+    gap: 7px;
     width: 90%;
     /* height: 60px; */
     margin: 5px auto 10px auto;
@@ -343,7 +359,7 @@ border-bottom:2px solid var(--main-blue1);
         width: auto;
         margin: auto;
         font-size: 0.9em;
-        padding: 10px;
+        padding: 10px 0px;
 
     }
 
@@ -357,15 +373,29 @@ border-bottom:2px solid var(--main-blue1);
 .date-finder-container {
     flex-direction: column;
     text-align: center;
+    margin: auto;
     margin-bottom: 0px;
 }
 #date-input {
-    height: 30px;
+    height: 25px;
     margin: 0px;
 }
 
 .date-finder-inputs {
     justify-content: center;
+}
+.result-section {
+    box-sizing: border-box;
+    width: 100%;
+    padding-right: 2px;
+    padding-left: 2px;
+    /* margin-right: 2px;
+    margin-left: 2px; */
+    margin: auto;
+}
+
+.date-result-list {
+    width: 95%;
 }
 
 }

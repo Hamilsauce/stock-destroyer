@@ -27,6 +27,12 @@ function init() {
     apiKey = hamKey;
 }
 
+const currencyFormatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 2
+});
+
 /*
 Part 1: get data from storage, user; validate data and construct query string/url for http request
 Part 2: Make the call
@@ -38,7 +44,7 @@ function getAlphaVantagedata() {
     const type = selType.value;
     const interval = selInterval.value;
     let returnSymbol = '';
-    //  let records = [];
+
     let record = '';
     let htmlArray = [];
     symbol = inpSymbol.value;
@@ -50,27 +56,32 @@ function getAlphaVantagedata() {
     })
         .then(data => {
             stockData = JSON.parse(data);
-            let html = "";
+
             let dataDisplay = document.querySelector('#divContents');
             let dataMessage = document.querySelector('#data-display-message');
             let propNames = Object.keys(stockData);
 
             records = Object.entries(stockData[propNames[1]]);
-
             records.forEach(stock => {
                 let [entryName, entryDetails] = stock;
-                let record = Object.entries(stock);
                 let entryDate = new Date(entryName).toDateString();
 
                 let printData = rec => {
                     let recOut = [];
-                    rec.forEach(recProp => {
-                        let line = /*html*/ `<li style="text-align: center;">
-                            <p>${recProp[0].slice(3)}:</p> ${recProp[1]}
-                        </li>`;
-                        recOut.push(line);
-                    });
 
+                    rec.forEach(recProp => {
+                        let propKey = recProp[0];
+                        let propVal = recProp[1]
+
+                        if (propKey !== '5. volume') {
+                            let line =
+                            /*html*/ `
+                                <li style="text-align: center;">
+                                    <p>${propKey.slice(3)}</p> ${currencyFormatter.format(propVal)}
+                                </li>`;
+                            recOut.push(line);
+                        }
+                    });
                     return recOut.join('');
                 };
                 let recordHTML = /*html*/ `
@@ -80,7 +91,6 @@ function getAlphaVantagedata() {
                         </div>`;
                 htmlArray.push(recordHTML);
             });
-            // console.log('symbol = ' + Object.entries(stockData["Meta Data"]["2. Symbol"]));
             dataMessage.innerHTML = `Currently viewing results for ${symbol}.`;
             dataDisplay.innerHTML = htmlArray.join('');
             document.querySelector('.date-finder-container').style.display = "flex";
@@ -96,7 +106,6 @@ function getAlphaVantagedata() {
 
 let request = obj => {
     return new Promise((resolve, reject) => {
-
         let xhr = new XMLHttpRequest();
         xhr.open(obj.mthod || 'GET', obj.url, true);
 
@@ -136,12 +145,11 @@ function setInterval() {
 }
 
 function saveDataToFile() {
-
     const data = document.querySelector('.jsonStringer');
-    data.innerText = JSON.stringify(stockData);
-    const blob = new Blob([data.innerText]);
     let a = document.body.appendChild(document.createElement('a'));
 
+    data.innerText = JSON.stringify(stockData);
+    const blob = new Blob([data.innerText]);
     a.href = window.URL.createObjectURL(blob);
     a.download = symbol + '.txt';
     a.click();
@@ -196,14 +204,44 @@ const writeFoundData = (date, dateFound, results) => {
         message = `Showing results for ${symbol} on ${date}.`;
         dateArray.forEach(el => {
             let [dataKey, dataValue] = el;
-            let pairString = `<li class="data-point">
-                            <p style="font-weight: bold;">${dataKey.slice(3)}</p>
-                            <p>${dataValue}</p>
-                        </li>`;
 
+            if (dataKey !== '5. volume') {
+                let pairString = /*html*/`
+                <li class="data-point">
+                    <p style="font-weight: bold;">${dataKey.slice(3)}</p>
+                    <p>${currencyFormatter.format(dataValue)}</p>
+                </li>`;
             htmlOutput.push(pairString);
+        }
         });
         dataMessage.innerHTML = message;
         contentDisplay.innerHTML = `<ul class="date-result-list">${htmlOutput.join('')}</ul>`;
+
+//         rec.forEach(recProp => {
+//             let propKey = recProp[0];
+//             let propVal = recProp[1]
+
+
+//                 let line =
+//                             /*html*/ `
+//                                 <li style="text-align: center;">
+//                                     <p>${propKey.slice(3)}</p> ${currencyFormatter.format(propVal)}
+//                                 </li>`;
+//                 recOut.push(line);
+//             }
+//         });
+//         return recOut.join('');
+//     };
+//     let recordHTML = /*html*/ `
+//                         <div class="record">
+//                             <div class="entry-name-container">${entryDate}</div>
+//                             <ul class="entry-details-list">${printData(Object.entries(entryDetails))}</ul>
+//                         </div>`;
+//     htmlArray.push(recordHTML);
+// });
+
+
+
+
     }
 }

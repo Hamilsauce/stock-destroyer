@@ -55,51 +55,52 @@
           </span>
         </p>
         <div class="options-container">
-        <p>
-          <label for="selSize">Output</label>
-          <select id="selSize" class="select-control">
-            <option>compact</option>
-            <option>full</option>
-          </select>
-        </p>
-        <p>
-          <label for="selType">Type</label>
-          <select id="selType" class="select-control">
-            <option>json</option>
-            <option>csv</option>
-          </select>
-        </p>
+          <p>
+            <label for="selSize">Output</label>
+            <select id="selSize" class="select-control">
+              <option>compact</option>
+              <option>full</option>
+            </select>
+          </p>
+          <p>
+            <label for="selType">Type</label>
+            <select id="selType" class="select-control">
+              <option>json</option>
+              <option>csv</option>
+            </select>
+          </p>
         </div>
         <div>
           <input type="submit" class="btn main-green" id="submit-button" value="Get Data">
           <button class="btn" onclick="saveDataToFile();">Save to File</button>
         </div>
       </form>
+
+<div class="result-section">
       <div class="date-finder-container">
-        <label for="date-input" class="date-search-label">Search for specific date</label>
+        <label for="date-input" class="date-search-label">Search for date</label>
         <div class="date-finder-inputs">
-        <input type="text" class="text-input" id="date-input" placeholder="Search date (mm/dd/yyyy)">
-        <button class="btn" id="find-button">Find</button>
-      </div>
-
-    </div>
-
-
-      <div id="data-container">
-        <div id="data-display-message">
-          View stock histories here after a request is submitted
+          <input type="text" class="text-input" id="date-input" placeholder="Search date (mm/dd/yyyy)">
+          <button class="btn" id="find-button">Find</button>
         </div>
+      </div>
+          <div id="data-display-message">
+        View stock histories here after a request is submitted
+      </div>
+      <div id="data-container">
         <div id="search-results"></div>
         <div id="divContents"></div>
       </div>
+    </div>
     </div>
     <div style="display: none;">
       <pre class="jsonStringer">
         </pre>
     </div>
+  </div>
 
     <script src="script.js"></script>
-    
+
 
 </body>
 
