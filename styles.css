@@ -97,7 +97,7 @@ label {
     box-sizing: border-box;
     padding: 10px 20px;
     background: rgba(248, 248, 248, 0.918);
-    height: 100%;
+    height: fit-content;
     font-size: 1rem;
      border-left: 2px solid var(--main-green);
      border-right: 2px solid var(--main-green);
