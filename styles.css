@@ -21,12 +21,12 @@
 
     --main-blue: rgb(65, 97, 130);
     --main-blue1: rgba(80, 110, 140, 1);
-    --main-purp:rgb(151, 49, 129);
+    --main-purp2:rgb(151, 49, 129);
     --main-purp1:rgba(99, 16, 81, 1);
-    --main-purp2:rgb(82, 65, 78);
-    --main-purp3:rgba(209, 191, 205, 1);
-    --main-green:rgba(150, 169, 58, 1);
-    --main-green1: rgba(191, 208, 111, 1);
+    --main-purp:rgb(82, 65, 78);
+    --main-blue3:rgba(209, 191, 205, 1);
+    --main-green:rgb(168, 197, 79);
+    --main-green1: rgb(245, 249, 228);
     --main-green2: rgba(113, 132, 21, 1);
 }
 
@@ -38,7 +38,7 @@ body {
     margin: 0 auto;
     max-width: 700px;
     height: 100%;
-    background: rgb(224, 227, 228);
+    background: rgb(252, 252, 252);
 
     /* border-bottom: 0px solid rgb(83, 169, 196); */
 }
@@ -48,7 +48,7 @@ label {
 }
 .app {
     box-sizing: border-box;
-        color: var(--main-purp);
+        color: var(--main-blue);
         background: rgba(248, 248, 248, 0.918);
         height: 100%;
         border: 2px solid var(--main-green);
@@ -68,8 +68,8 @@ label {
     box-sizing: border-box;
     margin: 0;
     margin-bottom: 0px;
-    padding: 10px 0px 20px 0px;
-    font-size: 1.2em;
+    padding: 5px 1px 10px 5px;
+    font-size: 1.1em;
     color: rgb(255, 255, 255);
     background: var(--main-blue1);
 }
@@ -79,7 +79,7 @@ label {
 #header-strip {
     box-sizing: border-box;
     display: block;
-    padding: 5px 5px;
+    padding: 20px 10px;
     margin: 0;
     margin-left: 15px;
     width: auto;
@@ -99,16 +99,17 @@ label {
 }
 
 .welcome-message {
+    padding:  5px 10px;
     margin-top: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
     font-size: 1em;
-    color: var(--main-purp1);
+    color: var(--main-blue1);
 
 }
 
 p {
-    margin: px 5px;
-    /* color: var(--main-purp); */
+    margin: 5px 5px;
+    /* color: var(--main-blue); */
     text-decoration: none;
 }
 
@@ -122,7 +123,7 @@ p {
     padding: 3px;
     margin: 3px 5px;
 
-    border: 1px solid var(--main-purp3);
+    border: 1px solid var(--main-blue3);
     border-radius: 3px;
 }
 
@@ -136,9 +137,9 @@ p {
     padding: 3px;
     margin: 3px 10px 3px 5px;
 
-    color: var(--main-purp1);
+    color: var(--main-blue1);
 
-    border: 1px solid var(--main-purp3);
+    border: 1px solid var(--main-blue3);
     border-radius: 3px;
 }
 
@@ -147,24 +148,39 @@ p {
     /* margin-bottom: 8px; */
 }
 
-.form-button-container {
+.date-finder-container {
+    box-sizing: border-box;
+    display: none;
+    justify-content: space-between;
+       margin: 5px;
+       padding: 5px;
+       padding-left: 15px;
+    /* margin: 0px 0px;
+    padding: 3px; */
+    background: var(--main-green);
+    border-radius: 3px;
+    border: 1px solid var(--main-green2);
+    border-bottom: 1px solid var(--main-green);
+}
+
+.date-finder-inputs {
     box-sizing: border-box;
     display: flex;
     justify-content: flex-end;
-       margin: 5px;
-       padding: 5px;
-    /* margin: 0px 0px;
-    padding: 3px; */
-    background: var(--main-green1);
-    border-radius: 3px;
-    border: 1px solid var(--main-green);
 }
 
  #date-input {
-     border: 1px solid var(--main-purp);
-     color: var(--main-purp1);
+     border: 1px solid var(--main-blue);
+     color: var(--main-blue1);
+     height: 30px;
+     margin: 0px;
  }
-
+.date-search-label {
+    /* display:  unset; */
+    color: white;
+    font-weight: bold;
+    font-size: 1.1em;
+}
 .btn {
     padding: 4px 7px;
     margin: 1px 5px 1px 5px;
@@ -187,14 +203,28 @@ p {
 .btn:active {
     background: rgb(24, 75, 92);
 }
+.options-container {
+    display: flex;
+    box-sizing: border-box;
+    margin-top: 0px;
+    padding: 0px;
+}
 
-#find-button {}
+.options-container>p {
+    margin-top: 0px;
+}
+
+#find-button {
+    box-sizing: border-box;
+    margin:0px;
+    height: 30px;
+}
 
 #data-display-message {
     padding: 5px;
     margin-bottom: 15px;
     margin-top: 10px;
-    color: var(--main-purp1);
+    color: var(--main-blue1);
     transition: 500ms padding ease, 3000ms border ease;
 
 }
@@ -204,11 +234,12 @@ p {
     margin-top: 0px;
     padding: 10px;
     border: 2px solid #4033585e;
-    border-radius: 5px;
+    border-top: 0px solid white;
+    border-radius: 3px;
     height: auto;
     background: rgba(255, 255, 255, 0.774);
     transition: 500ms color ease,500ms padding ease, 3000ms border ease;
-    overflow: auto;
+    /* overflow: auto; */
 }
 
 .record {
@@ -234,7 +265,7 @@ p {
     margin-bottom: 20px;
     padding-left: 0px;
     list-style: none;
-    color: var(--main-purp1);
+    color: var(--main-blue1);
     ;
     transition: 500ms padding ease, 3000ms border ease;
 }
@@ -248,12 +279,12 @@ p {
 .date-result-list {
     /* display: flex; */
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: auto;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr 1fr;
 
     gap: 10px;
     width: 90%;
-    height: 60px;
+    /* height: 60px; */
     margin: 5px auto 10px auto;
 border-top: 2px solid var(--main-blue1);
 border-bottom:2px solid var(--main-blue1);
@@ -285,6 +316,7 @@ border-bottom:2px solid var(--main-blue1);
     /* border: 2px solid var(--main-blue1); */
 }
 .data-point>p {
+    display: block;
     box-sizing: border-box;
     margin: 0;
     padding: 0px;
@@ -308,7 +340,17 @@ border-bottom:2px solid var(--main-blue1);
     .btn {
         margin-top: 15px;
     }
+.date-finder-container {
+    flex-direction: column;
+    text-align: center;
+}
+#date-input {
+    height: 30px;
+    margin: 0px;
+}
 
-
+.date-finder-inputs {
+    justify-content: center;
+}
 
 }

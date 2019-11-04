@@ -134,7 +134,7 @@ function setInterval() {
 
 function saveDataToFile() {
     const data = document.querySelector('#divContents');
-    const blob = new Blob([records]);
+    const blob = new Blob([stockData]);
     let a = document.body.appendChild(document.createElement('a'));
 
     a.href = window.URL.createObjectURL(blob);
